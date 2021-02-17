@@ -8,20 +8,13 @@ import Empty from "components/Appointment/Empty";
 
 export default function Appointment(props) {
 
-  // const showAppointment = () => {
-  //   if(props.interview) {
-  //     return <Show/>
-  //   } else{ <Empty/>
-  //   }
-  // }
-  
-  /* ({props.interview}) ? <Show/> : <Empty/> */
 
   return(
-    <article>
+    <article className="appointment">
       <Header time={props.time}  />
-      { (props.interview) ? <Show student={props.interview.student} interviewer={props.interview.interviewer}/> : <Empty /> }
+      { (props.interview) ? <Show student={props.interview.student} interviewer={props.interview.interviewer} /> : <Empty /> }
       
     </article>
   );
 }
+
