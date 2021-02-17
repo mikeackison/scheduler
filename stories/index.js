@@ -8,12 +8,19 @@ import "index.scss";
 import Button from "components/Button";
 
 import DayListItem from "components/DayListItem.js"
-
 import DayList from "components/DayList.js"
 
 import InterviewerListItem from "components/InterviewerListItem.js"
-
 import InterviewerList from "components/InterviewerList.js"
+
+import Appointment from "components/Appointment/index.js"
+import Header from "components/Appointment/Header.js"
+import Empty from "components/Appointment/Empty.js"
+import Show from "components/Appointment/Show.js"
+import Confirm from "components/Appointment/Confirm.js"
+import Status from "components/Appointment/Status.js"
+
+
 
 
 
@@ -109,10 +116,9 @@ storiesOf("InterviewerListItem", module)
       id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={action("setInterviewer")}
+      setInterviewer={event => action("setInterviewer")(interviewer.id)}
     />
   ));
-
 
 
 
@@ -141,3 +147,34 @@ storiesOf("InterviewerList", module)
       setInterviewer={action("setInterviewer")}
     />
   ));
+
+
+  storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12pm" />)
+  .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+  .add("Show", () => (
+    <Show student="Lydia Miller-Jones" interviewer={interviewer} onEdit={action("onEdit")} onDelete={action("onDelete")} /> // action() allows us to create a callback that appears in the actions panel when clicked
+  ))
+  .add("Confirm", () => (
+    <Confirm message="Delete the appointment?" onConfirm={action("onConfirm")} onCancel={action("onCancel")} /> // action() allows us to create a callback that appears in the actions panel when clicked
+  ))
+  .add("Status", () => ( <Status message="Deleting" /> ));
+  
+
+
+
+
+
+
+
+
+
+  // .add("Show", () => <Show onEdit={action("onEdit")} />)
+
+
+  
