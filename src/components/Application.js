@@ -68,10 +68,22 @@ const appointments = [
 
 export default function Application(props) {
 
-  const [day, setDay] = useState("Monday");
-  const [days, setDays] = useState([]);
+  // const [day, setDay] = useState("Monday");
+  // const [days, setDays] = useState([]);
 
-  console.log(day);
+
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // you may put the line below, but will have to remove/comment hardcoded appointments variable
+    // appointments: {}
+    
+  });
+
+  const setDay = day => setState({ ...state, day });
+  const setDays = days => setState({...state, days})
+
+  console.log(state.day);
 
   const interview = appointments.map(appointment =>
     // return is implicit - can remove curly braces, return and parenthsis
@@ -101,8 +113,8 @@ export default function Application(props) {
         <nav className="sidebar__menu">
 
           <DayList
-            days={days}
-            day={day}
+            days={state.days}
+            day={state.day}
             setDay={setDay}
           />
         </nav>
