@@ -5,7 +5,7 @@ export function getAppointmentsForDay(state, day) {
   }
 
   const dayObject = state.days.find(specificDay  => specificDay.name === day);
-  console.log(dayObject)
+  // console.log(dayObject)
 
   if (!dayObject) {
     return []
