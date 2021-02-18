@@ -6,7 +6,7 @@ import "components/Application.scss";
 import DayList from "components/DayList"
 
 import Appointment from "components/Appointment"
-import { getAppointmentsForDay } from "../helpers/selectors.js"
+import { getAppointmentsForDay, getInterview} from "../helpers/selectors.js"
 
 
 export default function Application(props) {
@@ -15,11 +15,12 @@ export default function Application(props) {
     day: "Monday",
     days: [],
     // you may put the line below, but will have to remove/comment hardcoded appointments variable
-    appointments: {}
-    
+    appointments: {}, 
+    interviewers: {}
+
   });
 
-  const dailyAppointments = getAppointmentsForDay(state, state.day)
+  const appointments = getAppointmentsForDay(state, state.day)
   // const dailyAppointments = getAppointmentsForDay(state, state.day)
 
   const setDay = day => setState(prev => ({ ...prev, day }));
@@ -27,11 +28,18 @@ export default function Application(props) {
 
   // console.log(state.day);
 
-  const schedule = dailyAppointments.map(appointment =>
-    // return is implicit - can remove curly braces, return and parenthsis
-    <Appointment key={appointment.id} {...appointment} />
-
-  );
+  const schedule = appointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+      />
+    );
+  });
+  
 
 
 
@@ -46,7 +54,7 @@ export default function Application(props) {
     ]).then((all) => {
       // console.log(all)
       console.log(all[2].data)
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data }));
+      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}));
     })
   }, [])
 
