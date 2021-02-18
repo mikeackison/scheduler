@@ -20,13 +20,14 @@ export default function Application(props) {
   });
 
   const dailyAppointments = getAppointmentsForDay(state, state.day)
+  // const dailyAppointments = getAppointmentsForDay(state, state.day)
 
   const setDay = day => setState(prev => ({ ...prev, day }));
   // const setDays = days => setState({...state, days})
 
-  console.log(state.day);
+  // console.log(state.day);
 
-  const interview = dailyAppointments.map(appointment =>
+  const schedule = dailyAppointments.map(appointment =>
     // return is implicit - can remove curly braces, return and parenthsis
     <Appointment key={appointment.id} {...appointment} />
 
@@ -36,13 +37,15 @@ export default function Application(props) {
 
   useEffect(() => {
     const daysURL = `/api/days`
-    const appURL = `/api/appointments`
-    // const intURL = `/api/interviewers`
+    const appointmentsURL = `/api/appointments`
+    const interviewersURL = `/api/interviewers`
     Promise.all([
       axios.get(daysURL),
-      axios.get(appURL)
+      axios.get(appointmentsURL),
+      axios.get(interviewersURL)
     ]).then((all) => {
-      console.log(all)
+      // console.log(all)
+      console.log(all[2].data)
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data }));
     })
   }, [])
@@ -79,7 +82,7 @@ export default function Application(props) {
       <section className="schedule">
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
 
-        {interview}
+        {schedule}
         <Appointment key="last" time="5pm" />
 
 
