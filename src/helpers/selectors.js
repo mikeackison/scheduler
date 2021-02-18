@@ -20,19 +20,14 @@ export function getAppointmentsForDay(state, day) {
 
 
 export function getInterview(state, interview) {
+
   if(!interview) {
     return null
-  }
+  };
   
-  const interviewerId = interview.interviewer
-  console.log("INTERVIEWER", interviewerId)
-  
-  console.log("STATEINTERVIEWERS", state.interviewers)
-
-  const tempIntID = state.interviewers[interviewerId]
-
-  const result = {...interview, interviewer: tempIntID}
-  console.log("RESULT------->", result)
+  const interviewerId = interview.interviewer;
+  const tempIntID = state.interviewers[interviewerId];
+  const result = {...interview, interviewer: tempIntID};
 
   return result;
 
