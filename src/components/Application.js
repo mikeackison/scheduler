@@ -7,8 +7,6 @@ import DayList from "components/DayList"
 
 import Appointment from "components/Appointment"
 
-// should this be components/Appointment/index.js?
-
 const appointments = [
   {
     id: 1,
@@ -46,8 +44,8 @@ const appointments = [
     interview: {
       student: "Random Person",
       interviewer: {
-        id: 3, 
-        name: "Mildred Nazir", 
+        id: 3,
+        name: "Mildred Nazir",
         avatar: "https://i.imgur.com/T2WwVfS.png",
       }
     }
@@ -59,33 +57,14 @@ const appointments = [
     interview: {
       student: "A. Student",
       interviewer: {
-        id: 4, 
-        name: "Cohana Roy", 
+        id: 4,
+        name: "Cohana Roy",
         avatar: "https://i.imgur.com/FK8V841.jpg",
       }
     }
   }
 
 ];
-
-// // removed when adding useState 
-// const days = [
-//   {
-//     id: 1,
-//     name: "Monday",
-//     spots: 2,
-//   },
-//   {
-//     id: 2,
-//     name: "Tuesday",
-//     spots: 5,
-//   },
-//   {
-//     id: 3,
-//     name: "Wednesday",
-//     spots: 0,
-//   },
-// ];
 
 export default function Application(props) {
 
@@ -94,21 +73,21 @@ export default function Application(props) {
 
   console.log(day);
 
-  const interview = appointments.map(appointment => 
+  const interview = appointments.map(appointment =>
     // return is implicit - can remove curly braces, return and parenthsis
-    <Appointment key={appointment.id} {...appointment} /> 
-     
+    <Appointment key={appointment.id} {...appointment} />
+
   );
 
-  const testURL = `http://localhost:8001/api/days`
   useEffect(() => {
+    const testURL = `/api/days`
     axios.get(testURL).then(response => {
       setDays([...response.data])
       console.log(response.data);
     });
-}, [])
+  }, [])
 
-  
+
   return (
     <main className="layout">
       <section className="sidebar">
