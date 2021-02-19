@@ -33,6 +33,12 @@ export default function Application(props) {
 
   // console.log(state.day);
 
+
+  function bookInterview(id, interview) {
+    console.log("ID, INTERVIEW--------->", id, interview);
+  }
+  
+
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     return (
@@ -42,6 +48,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     );
   });
