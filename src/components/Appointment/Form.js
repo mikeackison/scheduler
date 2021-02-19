@@ -6,6 +6,7 @@ export default function Form(props) {
 
   const [name, setName] = useState((props.name || ""))
   const [interviewer, setInterviewer] = useState(props.interviewer || null)
+  // temporarlily set <props.inteviewer> to an empty array on INTERVIEW LIST
 
   const reset = () => {
 

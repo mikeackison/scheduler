@@ -9,12 +9,15 @@ import Appointment from "components/Appointment"
 import { getAppointmentsForDay, getInterview} from "../helpers/selectors.js"
 
 
+
+
+
 export default function Application(props) {
 
+ 
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    // you may put the line below, but will have to remove/comment hardcoded appointments variable
     appointments: {}, 
     interviewers: {}
 
@@ -40,9 +43,6 @@ export default function Application(props) {
     );
   });
   
-
-
-
   useEffect(() => {
     const daysURL = `/api/days`
     const appointmentsURL = `/api/appointments`
