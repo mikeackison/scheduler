@@ -6,8 +6,11 @@ import InterviewerListItem from "components/InterviewerListItem";
 
 export default function InterviewerList(props) {
 
-  const interviewers = props.interviewers.map(interviewer => 
-    // return is implicit - can remove curly braces, return and parenthsis
+  const temporaryPropsInterviewers = []
+
+  const interviewers = temporaryPropsInterviewers.map(interviewer => 
+  // temporarlily set ^^^^^^^^^ <props.inteviewers> to an empty array  on INTERVIEW LIST
+   
       <InterviewerListItem 
         key={interviewer.id}
         name={interviewer.name}
