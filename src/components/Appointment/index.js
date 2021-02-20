@@ -12,8 +12,6 @@ import Error from "components/Appointment/Error";
 
 import useVisualMode from "hooks/useVisualMode"
 
-import bookInterview from "components/Application"
-
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -32,7 +30,7 @@ export default function Appointment(props) {
   );
 
   function save(name, interviewer) {
-    console.log("SAVE-------------->", name, interviewer)
+    // console.log("SAVE-------------->", name, interviewer)
    
     const interview = {
       student: name,

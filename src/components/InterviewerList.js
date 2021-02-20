@@ -4,14 +4,9 @@ import "components/InterviewerList.scss";
 
 import InterviewerListItem from "components/InterviewerListItem";
 
-import bookInterview from "components/Application"
-
 export default function InterviewerList(props) {
 
-  const temporaryPropsInterviewers = []
-
   const interviewers = props.interviewers.map(interviewer => 
-  // temporarlily set ^^^^^^^^^ <props.inteviewers> to an empty array  on INTERVIEW LIST
    
       <InterviewerListItem 
         key={interviewer.id}
