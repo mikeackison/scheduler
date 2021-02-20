@@ -29,6 +29,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  // console.log("props.interview------->", props.interview)
   function save(name, interviewer) {
     // console.log("SAVE-------------->", name, interviewer)
    
@@ -38,7 +39,7 @@ export default function Appointment(props) {
     };
     transition(SAVING);
     props.bookInterview(props.id, interview)
-    .then(response => transition(SHOW))
+    .then((response) => transition(SHOW))
     .catch(error => transition(ERROR_SAVE, true));
    
   }

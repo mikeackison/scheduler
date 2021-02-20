@@ -11,8 +11,10 @@ const [state, setState] = useState({
 
 });
 
+console.log("STATE 1------->", state)
+
  function bookInterview(id, interview) {
-  // console.log("ID, INTERVIEW--------->", id, interview);
+  console.log("STATE.DAY BOOKINTERVIEW-------->", state.day);
 
   const appointment = {
     ...state.appointments[id],
@@ -23,27 +25,33 @@ const [state, setState] = useState({
     ...state.appointments,
     [id]: appointment
   };
+  const days = spotsRemaining({ ...state, appointments  })
 
-  return axios.put(`/api/appointments/${id}`, { interview }).then(response => setState({ ...state, appointments }))
+  return axios.put(`/api/appointments/${id}`, { interview })
+  .then(response => setState({ ...state, appointments, days  }))
 }
 
 function deleteInterview(id, interview) {
+
+  console.log("STATE.DAY deleteINTERVIEW-------->", state.day);
 
   const appointment = {
     ...state.appointments[id],
     interview: null
   };
-
+  
   const appointments = {
     ...state.appointments,
     [id]: appointment
   };
 
+  const days = spotsRemaining({ ...state, appointments  })
+  
   return axios.delete(`/api/appointments/${id}`)
-    .then(() => {
-      setState({ ...state, appointments })
-    })
-
+  .then(() => {
+    setState({ ...state, appointments, days })
+  })
+  
 };
 
 const setDay = day => setState(prev => ({ ...prev, day }));
@@ -61,6 +69,27 @@ useEffect(() => {
     setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
   })
 }, [])
+
+
+function spotsRemaining(state) {
+
+  
+  const days = state.days.map(dayObj => { 
+    let availableSpots = 0;
+    
+    dayObj.appointments.forEach(numID => {
+
+    if (!state.appointments[numID].interview) {
+      availableSpots++
+      }
+    })
+
+    dayObj.spots = availableSpots;
+    return dayObj;
+  });
+
+  return days
+}
 
 return {setDay, deleteInterview, bookInterview, state}
 }
