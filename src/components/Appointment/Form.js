@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
-import bookInterview from "components/Application"
-
 export default function Form(props) {
 
   const [name, setName] = useState((props.name || ""))
   const [interviewer, setInterviewer] = useState(props.interviewer || null)
-  // temporarlily set <props.inteviewer> to an empty array on INTERVIEW LIST
 
   const reset = () => {
 
@@ -33,9 +30,7 @@ export default function Form(props) {
             type="text"
             placeholder="Enter Student Name"
             value={name} onChange={(event) => setName(event.target.value)}
-          /*
-            This must be a controlled component
-          */
+        
           />
         </form>
         <InterviewerList interviewers={props.interviewers} value={interviewer} onChange={setInterviewer} />
