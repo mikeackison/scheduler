@@ -26,7 +26,7 @@ export default function useApplicationData() {
     const days = spotsRemaining({ ...state, appointments });
 
     return axios
-      .put(`/api/appointments/${id}`, appointment)
+      .put(`/api/appointments/${id}`, { interview })
       .then((response) => setState({ ...state, appointments, days }));
   }
 
