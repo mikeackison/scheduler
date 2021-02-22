@@ -1,22 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import DayListItem from "components/DayListItem";
+import DayListItem from 'components/DayListItem';
 
 export default function DayList(props) {
-
-  const days = props.days.map(day => 
+  const days = props.days.map((day) => (
     // return is implicit - can remove curly braces, return and parenthsis
-      <DayListItem key={day.id}
-        name={day.name}
-        spots={day.spots}
-        selected={day.name === props.day}
-        setDay={props.setDay} />
+    <DayListItem
+      key={day.id}
+      name={day.name}
+      spots={day.spots}
+      selected={day.name === props.day}
+      setDay={props.setDay}
+    />
+  ));
 
-  );
+  // console.log("DAYLISTITEM - DAYS:-------->", days)
 
-  console.log("DAYLISTITEM - DAYS:-------->", days)
-
-  return (
-    <ul>{days}</ul>
-  )
+  return <ul>{days}</ul>;
 }

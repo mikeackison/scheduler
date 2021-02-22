@@ -9,10 +9,10 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
-  console.log('STATE 1------->', state);
+  // console.log('STATE 1------->', state);
 
   function bookInterview(id, interview) {
-    console.log('STATE.DAY BOOKINTERVIEW-------->', state.day);
+    // console.log('STATE.DAY BOOKINTERVIEW-------->', state.day);
 
     const appointment = {
       ...state.appointments[id],
@@ -31,7 +31,7 @@ export default function useApplicationData() {
   }
 
   function deleteInterview(id, interview) {
-    console.log('STATE.DAY deleteINTERVIEW-------->', state.day);
+    // console.log('STATE.DAY deleteINTERVIEW-------->', state.day);
 
     const appointment = {
       ...state.appointments[id],
