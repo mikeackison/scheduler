@@ -7,7 +7,10 @@ import Appointment from 'components/Application';
 afterEach(cleanup);
 
 describe('Appointment', () => {
-  xit('renders without crashing', () => {
+  it('renders without crashing', async () => {
+    const promise = Promise.resolve();
+
     render(<Appointment />);
+    await act(() => promise);
   });
 });
