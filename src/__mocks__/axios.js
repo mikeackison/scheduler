@@ -15,7 +15,6 @@ export default {
         statusText: 'OK',
         data: fixtures.appointments,
       });
-      /* Resolve appointments data */
     }
 
     if (url === '/api/interviewers') {
@@ -24,7 +23,6 @@ export default {
         statusText: 'OK',
         data: fixtures.interviewers,
       });
-      /* Resolve interviewers data */
     }
   }),
 

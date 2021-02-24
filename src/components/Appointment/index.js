@@ -27,10 +27,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  // console.log("props.interview------->", props.interview)
   function save(name, interviewer) {
-    // console.log("SAVE-------------->", name, interviewer)
-
     const interview = {
       student: name,
       interviewer,
@@ -53,7 +50,6 @@ export default function Appointment(props) {
 
   return (
     <article className='appointment' data-testid='appointment'>
-      {/* Add a data-testid="appointment" prop to the <article> root element in the */}
       <Header time={props.time} />
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
@@ -88,7 +84,6 @@ export default function Appointment(props) {
       {mode === EDIT && (
         <Form
           name={props.interview.student}
-          // name={props.name}
           interviewers={props.interviewers}
           interviewer={props.interview.interviewer.id}
           onSave={save}

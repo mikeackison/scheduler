@@ -14,7 +14,5 @@ export default function DayList(props) {
     />
   ));
 
-  // console.log("DAYLISTITEM - DAYS:-------->", days)
-
   return <ul>{days}</ul>;
 }

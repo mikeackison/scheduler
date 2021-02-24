@@ -1,101 +1,45 @@
 export function getAppointmentsForDay(state, day) {
-
-  if(state.days.length === 0) {
-    return []
+  if (state.days.length === 0) {
+    return [];
   }
 
-  const dayObject = state.days.find(specificDay  => specificDay.name === day);
-  // console.log("DAYOBJECT--------->", dayObject)
+  const dayObject = state.days.find((specificDay) => specificDay.name === day);
 
   if (!dayObject) {
-    return []
+    return [];
   }
 
-  const appObject = dayObject.appointments
-  const mappedDays = appObject.map((id) => state.appointments[id])
- 
+  const appObject = dayObject.appointments;
+  const mappedDays = appObject.map((id) => state.appointments[id]);
+
   return mappedDays;
 }
-
-
 
 export function getInterview(state, interview) {
+  if (!interview) {
+    return null;
+  }
 
-  if(!interview) {
-    return null
-  };
-  
   const interviewerId = interview.interviewer;
   const tempIntID = state.interviewers[interviewerId];
-  const result = {...interview, interviewer: tempIntID};
+  const result = { ...interview, interviewer: tempIntID };
 
   return result;
-
 }
-
-
 
 export function getInterviewersForDay(state, day) {
-
-  if(state.days.length === 0) {
-    return []
+  if (state.days.length === 0) {
+    return [];
   }
 
-  const dayObject = state.days.find(specificDay  => specificDay.name === day);
+  const dayObject = state.days.find((specificDay) => specificDay.name === day);
 
   if (!dayObject) {
-    return []
+    return [];
   }
-  
-  const appObject = dayObject.interviewers
-  const mappedDays = appObject.map((id) => state.interviewers[id])
- 
+
+  const appObject = dayObject.interviewers;
+  const mappedDays = appObject.map((id) => state.interviewers[id]);
+
   return mappedDays;
- 
-
 }
-
-
-
-
-// const state = {
-//   days: [
-//     {
-//       id: 1,
-//       name: "Monday",
-//       appointments: [1, 2, 3]
-//     },
-//     {
-//       id: 2,
-//       name: "Tuesday",
-//       appointments: [4, 5]
-//     }
-//   ],
-//   appointment: {
-//     "1": { id: 1, time: "12pm", interview: null },
-//     "2": { id: 2, time: "1pm", interview: null },
-//     "3": {
-//       id: 3,
-//       time: "2pm",
-//       interview: { student: "Archie Cohen", interviewer: 2 }
-//     },
-//     "4": { id: 4, time: "3pm", interview: null },
-//     "5": {
-//       id: 5,
-//       time: "4pm",
-//       interview: { student: "Chad Takahashi", interviewer: 2 }
-//     }
-//   },
-//   interviewers: {
-//     1: {  
-//       id: 1,
-//       name: "Sylvia Palmer",
-//       avatar: "https://i.imgur.com/LpaY82x.png"
-//     },
-//     2: {
-//       id: 2,
-//       name: "Tori Malcolm",
-//       avatar: "https://i.imgur.com/Nmx0Qxo.png"
-//     }
-//   }
-// };

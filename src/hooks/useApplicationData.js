@@ -9,11 +9,7 @@ export default function useApplicationData() {
     interviewers: {},
   });
 
-  // console.log('STATE 1------->', state);
-
   function bookInterview(id, interview) {
-    // console.log('STATE.DAY BOOKINTERVIEW-------->', state.day);
-
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -31,8 +27,6 @@ export default function useApplicationData() {
   }
 
   function deleteInterview(id, interview) {
-    // console.log('STATE.DAY deleteINTERVIEW-------->', state.day);
-
     const appointment = {
       ...state.appointments[id],
       interview: null,
@@ -61,7 +55,6 @@ export default function useApplicationData() {
       axios.get(appointmentsURL),
       axios.get(interviewersURL),
     ]).then((all) => {
-      // console.log(all[2].data)
       setState((prev) => ({
         ...prev,
         days: all[0].data,
