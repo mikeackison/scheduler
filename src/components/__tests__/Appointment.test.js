@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, act } from '@testing-library/react';
 
 import Appointment from 'components/Application';
-import { act } from '@testing-library/react-hooks';
 
 afterEach(cleanup);
 
