@@ -6,6 +6,12 @@ Interview Scheduler is a single-page app built with with React, that allows for 
 
 The scheduler was developed using Jest tests, Storybook, and Cypress throughout the development of the project.
 
+## Screenshots
+
+!["Wednesday"](https://github.com/mikeackison/scheduler/blob/master/public/images/screenshots/Screen%20Shot%202021-02-24%20at%201.12.15%20PM.png?raw=true)
+!["Create/Edit"](https://github.com/mikeackison/scheduler/blob/master/public/images/screenshots/Screen%20Shot%202021-02-24%20at%201.12.41%20PM.png?raw=true)
+!["Delete"](https://github.com/mikeackison/scheduler/blob/master/public/images/screenshots/Screen%20Shot%202021-02-24%20at%201.13.17%20PM.png?raw=true)
+
 ## Features
 
 - Interviews can be booked between Monday and Friday.
